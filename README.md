@@ -1,4 +1,4 @@
-# Blink ⚡
+# BlinkLauncher ⚡
 
 A minimal, keyboard-driven application launcher for macOS. Designed for integation with [yabai](https://github.com/asmvik/yabai) and [skhd](https://github.com/asmvik/skhd).
 
