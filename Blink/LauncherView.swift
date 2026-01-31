@@ -53,8 +53,16 @@ class LauncherWindow {
     func showWindow() {
         guard let window = window else { return }
         
+        
+        // Get the screen containing the mouse cursor (the "focused" screen)
+        // This ensures Blink opens on whichever monitor the user is actively using
+        let mouseLocation = NSEvent.mouseLocation
+        let screenWithMouse = NSScreen.screens.first { screen in
+            NSMouseInRect(mouseLocation, screen.frame, false)
+        } ?? NSScreen.main
+        
         // Center window on screen
-        if let screen = NSScreen.main {
+        if let screen = screenWithMouse {
             let screenRect = screen.visibleFrame
             let x = screenRect.midX - (CGFloat)(windowWidth / 2)
             let y = screenRect.midY - (CGFloat)(windowHeight / 2) + 200
